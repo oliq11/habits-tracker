@@ -1,0 +1,19 @@
+@import 'bootstrap/dist/css/bootstrap.css';
+
+* {
+    font-family: 'Georgia', serif;
+}
+
+.el_listy {
+    background-color: #cdecd2;
+}
+body {
+    background-color: #9cc0a2;
+    color: rgb(15, 70, 28);
+}
+
+header, footer {
+    color: #9cc0a2;
+    padding: 10px;
+    text-align: center;
+}

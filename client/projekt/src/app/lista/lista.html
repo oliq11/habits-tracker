@@ -1,0 +1,40 @@
+<div class="m-3">
+    <h2 class="fw-bold mb-5">Twoje nawyki</h2>
+
+    <label class="form-check-label">
+        <input type="checkbox" class="form-check-input" [(ngModel)]="ukonczone">
+        Pokaż tylko odhaczone na dziś
+    </label>
+</div>
+
+<div style="max-height: 500px; overflow-y: auto;">
+    <div *ngFor="let h of filteredDane" class="el_listy card p-3 m-3">
+        <div *ngIf="edytowanyId !== h.id" class="d-flex justify-content-between align-items-center">
+            <div>
+                <h4 [class.text]="isToday(h.last_completed)">Nazwa: {{ h.name }}</h4>
+                <p class="text-muted d-block">Opis: {{ h.description }}</p>
+                <p class="fw-bold">🔥 {{ h.streak }}</p>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn btn-sm" [class.btn-success]="!isToday(h.last_completed)"
+                    [class.btn-secondary]="isToday(h.last_completed)" (click)="zrob(h.id)"
+                    [disabled]="isToday(h.last_completed)">
+                    {{ isToday(h.last_completed) ? 'Zrobione' : 'Wykonaj' }}
+                </button>
+
+                <button class="btn btn-sm btn-warning" (click)="startEdit(h)">Edytuj</button>
+                <button class="btn btn-sm btn-danger" (click)="usun(h.id)">✕</button>
+            </div>
+        </div>
+
+        <div *ngIf="edytowanyId === h.id">
+            <input [(ngModel)]="h.name" class="form-control mb-1" placeholder="Nazwa">
+            <input [(ngModel)]="h.description" class="form-control mb-1" placeholder="Opis">
+            <div>
+                <button class="btn btn-sm btn-primary" (click)="saveEdit(h)">Zapisz</button>
+                <button class="btn btn-sm btn-light" (click)="edytowanyId = null">Anuluj</button>
+            </div>
+        </div>
+    </div>
+</div>
