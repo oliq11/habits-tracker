@@ -1,77 +1,80 @@
 # Habits Tracker
 
-Aplikacja do śledzenia nawyków, stworzona w celu porównania dwóch technologii backendowych (Express i Flask) przy współpracy z frontendem w Angularze.
+A habit-tracking application developed to analyze and compare two distinct backend architectures (**Express.js** and **Flask**) integrated with an **Angular** frontend.
 
-## O Projekcie
-Projekt składa się z nowoczesnego frontendu oraz dwóch alternatywnych serwerów API. Oba backendy (Express oraz Flask) realizują te same zadania, co pozwala na analizę różnic w budowie i działaniu aplikacji w środowiskach Node.js oraz Python.
 
-### Główne technologie:
+
+## About the Project
+This project consists of a frontend and two interchangeable REST API servers. Both backends (Express and Flask) implement the same business logic, providing a comparison of **Node.js** and **Python** environments.
+
+### Core Tech Stack:
 * **Frontend:** Angular 
 * **Backend A:** Node.js + Express.js
 * **Backend B:** Python + Flask
-* **Baza danych:** MySQL
+* **Database:** MySQL
 
 ---
 
-## Struktura folderów
-* `/client` – Aplikacja kliencka w Angularze.
-* `/server_express` – API zbudowane w Express.js.
-* `/server_flask` – API zbudowane we Flasku.
-* `habits.sql` – Gotowy schemat bazy danych MySQL.
+## Project Structure
+* `/client` – Angular client-side application.
+* `/server_express` – REST API built with Express.js.
+* `/server_flask` – REST API built with Flask.
+* `habits.sql` – MySQL database schema and initial data.
 
 ---
 
-## Instrukcja uruchomienia
+## Getting Started
 
-### 1. Baza danych
-1. Upewnij się, że masz zainstalowany serwer MySQL (np. XAMPP).
-2. Stwórz nową bazę danych.
-3. Zaimportuj plik `habits.sql`, aby utworzyć niezbędne tabele.
+### 1. Database Configuration
+1. Ensure a MySQL server is running (e.g., via XAMPP or local MySQL instance).
+2. Create a new database.
+3. Import the `habits.sql` file to set up the required tables and relational structure.
 
-### 2. Wybór Backend'u
+### 2. Launching the Backend
 
-## Ważne: Konfiguracja Portów w Angularze
-Pamiętaj, aby przed uruchomieniem aplikacji klienckiej ustawić poprawny port API w pliku `client\projekt\src\app\habit.service.ts`:
+#### **Important: API Port Selection**
+The Angular frontend must be configured to point to the active backend. Update the API URL in `client/projekt/src/app/habit.service.ts`:
 
-| Backend | Port | Adres URL w Angularze |
+| Backend Technology | Port | API Endpoint URL |
 | :--- | :--- | :--- |
 | **Express.js** | 3000 | `http://localhost:3000` |
 | **Flask** | 4000 | `http://localhost:4000` |
 
-*Błąd połączenia (Connection Refused) zazwyczaj oznacza, że Angular próbuje połączyć się z niewłaściwym portem.*
+> *Note: If you encounter a "Connection Refused" error, verify that the frontend port matches the running backend server.*
 
-#### Opcja: Express.js (Node.js)
+#### Option A: Express.js (Node.js)
 ```bash
 cd server_express
 npm install
 npm start
 ```
-
-#### Opcja: Flask (Python)
+#### Option B: Flask (Python)
 ```bash
+
 cd server_flask
-# Opcjonalnie stwórz venv: python -m venv venv
+# Optional: create virtual environment
+# python -m venv venv
 pip install -r requirements.txt
 python app.py
 ```
-
-### 3. Frontend (Angular)
+### 3. Frontend Setup (Angular)
 ```bash
+
 cd client/projekt
 npm install
 ng serve
 ```
 ---
-Aplikacja będzie dostępna pod adresem: http://localhost:3001
+The application will be accessible at: http://localhost:3001
 
-### Funkcjonalności
-- Dodawanie nowych nawyków do śledzenia.
+#### Key Functionalities
+- Habit Management: Seamlessly add new habits to the tracking dashboard.
 
-- Oznaczanie wykonania zadania w danym dniu.
+- Task Tracking: Log daily progress and mark tasks as completed.
 
-- Przeglądanie listy nawyków pobieranych z bazy danych.
+- Data Persistence: Full CRUD operations with a MySQL database.
 
-- Możliwość płynnego przełączania między backendem Python a Node.js (poprzez zmianę portu API).
+- Backend Interoperability: Ability to swap the entire backend engine (Python vs. Node.js) with a simple port change.
 
-### Autor
-Projekt wykonany w ramach zajęć przez Oliwia Spaleniak.
+#### Author
+Project developed by Oliwia Spaleniak.
